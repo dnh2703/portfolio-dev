@@ -1,7 +1,5 @@
 'use client';
 
-import * as React from 'react';
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,17 +11,18 @@ import {
 } from '@/components/ui/command';
 import { CommandIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
 
 interface Props {
   links: { url: string; title: string }[];
 }
 
 export const CommandMenu = ({ links }: Props) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const isMac =
     typeof window !== 'undefined' ? window.navigator.userAgent.indexOf('Mac') > -1 : false;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
